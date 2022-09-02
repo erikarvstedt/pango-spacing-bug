@@ -14,7 +14,11 @@ Debug `SF Pro` font rendering in Pango.
 
 2. Run
    ```bash
+   # On Linux
    nix build --no-link --print-out-paths
+
+   # On other systems that have a Linux build server
+   nix build .#packages.x86_64-linux.default --no-link --print-out-paths
    ```
 
 ### More features
