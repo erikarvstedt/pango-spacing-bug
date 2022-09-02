@@ -31,9 +31,12 @@ renderVersion() {
 
 echo $pangoVersions
 for version in $pangoVersions; do
-    renderVersion $version "System Font 12"
     renderVersion $version "SF Pro Display 12"
+    renderVersion $version "System Font 12"
 done
+
+renderVersion pango_good "SF Pro Display 30"
+renderVersion pango_1_50_9 "SF Pro Display 30"
 
 # renderVersion pango_1_50_9 "System Font 12"
 # renderVersion pango_1_50_9 "SF Pro Display 12"
