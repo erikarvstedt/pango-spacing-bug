@@ -46,7 +46,11 @@
   inputs.pango_1_50_9 = { url = "github:GNOME/pango/0fcfed29cccbdd3a703f39b0eb36a2afd0aff04e"; flake = false; };
 
   outputs = { self, flake-utils, nixpkgs_21_11, nixpkgs_22_05, nixpkgs, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachSystem [
+      "x86_64-linux"
+      "aarch64-linux"
+      "i686-linux"
+    ] (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         inherit (pkgs) lib;
