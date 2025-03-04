@@ -74,6 +74,17 @@
         allPangoVersions = {
           pango_nixos_21_11 = nixpkgs_21_11.legacyPackages.${system}.pango;
           pango_nixos_22_05 = nixpkgs_22_05.legacyPackages.${system}.pango;
+          pango_1_56_1_with_harfbuzz_10_4_0 = (pkgs.appendOverlays [
+            (self: super: {
+              harfbuzz = super.harfbuzz.overrideAttrs (old: rec {
+                version = "10.4.0";
+                src = super.fetchurl {
+                  url = "https://github.com/harfbuzz/harfbuzz/releases/download/${version}/harfbuzz-${version}.tar.xz";
+                  hash = "sha256-SAttJQFBaTAGaaofw5+zVsFC1QKDJOpSs6J2SLm+qtg=";
+                };
+              });
+            })
+          ]).pango;
         } // (
           lib.mapAttrs mkPangoFromInput pangoInputs
         );
