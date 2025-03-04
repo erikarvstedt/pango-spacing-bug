@@ -1,6 +1,7 @@
 Debug `SF Pro` font rendering in Pango.
 
-[./output](./output) contains `pango-view` renderings for both font versions (see below) and different Pango versions (all built with the exact same dependencies).
+[./output](./output) contains `pango-view` renderings for both font versions (see below) and different Pango versions (all built with the exact same dependencies).\
+The renderings are created in a fixed, reproducible fontconfig environment.
 
 ### Fonts
 
