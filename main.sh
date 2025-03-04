@@ -35,8 +35,10 @@ for version in $pangoVersions; do
     renderVersion $version "System Font 12"
 done
 
-renderVersion pango_good "SF Pro Display 30"
-renderVersion pango_1_50_9 "SF Pro Display 30"
+if [[ -v pango_good && -v pango_1_50_9 ]]; then
+    renderVersion pango_good "SF Pro Display 30"
+    renderVersion pango_1_50_9 "SF Pro Display 30"
+fi
 
 # renderVersion pango_1_50_9 "System Font 12"
 # renderVersion pango_1_50_9 "SF Pro Display 12"

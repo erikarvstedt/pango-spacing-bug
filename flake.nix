@@ -71,12 +71,19 @@
 
         pangoInputs = lib.filterAttrs (name: _: lib.hasPrefix "pango" name) inputs;
 
-        pangoVersions = {
+        allPangoVersions = {
           pango_nixos_21_11 = nixpkgs_21_11.legacyPackages.${system}.pango;
           pango_nixos_22_05 = nixpkgs_22_05.legacyPackages.${system}.pango;
         } // (
           lib.mapAttrs mkPangoFromInput pangoInputs
         );
+
+        pangoVersions = allPangoVersions;
+        ## Use this to select specific versions
+        # pangoVersions = {
+        #   inherit (allPangoVersions)
+        #     pango_1_50_9;
+        # };
 
         envVars = pangoVersions // {
           pangoVersions = builtins.concatStringsSep " " (builtins.attrNames pangoVersions);
